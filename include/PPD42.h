@@ -7,7 +7,6 @@
 #define PPD42_H_
 
 #include <Arduino.h>
-#include "ETB.h"
 
 class PPD42 {
 

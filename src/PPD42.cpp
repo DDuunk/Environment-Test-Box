@@ -30,7 +30,7 @@ double PPD42::readRatio() {
 
 unsigned long PPD42::readLowPulseOccupancy() {
   unsigned long lowPulseOccupancy = pulseIn(this->sensorPin, LOW);
-
+  delay(10);
   Serial.print("|PPD42| LPO: ");
   Serial.println(lowPulseOccupancy);
 

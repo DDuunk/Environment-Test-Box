@@ -16,6 +16,7 @@ void MQ9B::calibrate() {
   // Get an average by testing 100 times
   for(int x = 0 ; x < 100 ; x++) {
     sensorValue = sensorValue + analogRead(this->sensorPin);
+    delay(10);
   }
   sensorValue = sensorValue / 100.0;
 
@@ -51,6 +52,7 @@ double MQ9B::readGas() {
 double MQ9B::readSensorVolt() {
   double sensorVolt;
   uint8_t sensorValue = analogRead(this->sensorPin);
+  delay(10);
 
   sensorVolt = (double) sensorValue / 1024 * 5.0;
   Serial.print("|MQ9B| SensorVolt: ");

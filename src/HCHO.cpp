@@ -10,6 +10,7 @@ bool HCHO::begin() {
 
 void HCHO::calibrate() {
   uint16_t sensorValue = analogRead(this->sensorPin);
+  delay(10);
   this->calibrationValue = (1023.0 / sensorValue) - 1;
 
   Serial.print("|HCHO| [Calibration] R0: ");
@@ -18,6 +19,7 @@ void HCHO::calibrate() {
 
 double HCHO::readHCHO() {
   uint16_t sensorValue = analogRead(this->sensorPin);
+  delay(10);
   double Rs = (1023.0 / sensorValue) - 1;
   double ppm = pow(10.0, ((log10(Rs / this->calibrationValue) - 0.0827) / (-0.4807)));
 
