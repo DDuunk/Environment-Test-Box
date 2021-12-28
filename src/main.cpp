@@ -33,21 +33,30 @@ void draw() {
   u8g2.drawFrame(0, 0, 128, 64);
 }
 
+// According to https://secoora.org/education-outreach/hurricanes/hurricane-glossary/
 void drawForecast() {
   uint32_t pressure = bmp280.getPressure() / 100;
 
   u8g2.drawStr(ALIGN_CENTER("Weather Forecast:"), 16, "Weather Forecast:");
 
-  if (pressure <= 1000.59 && pressure > 998.5) {
-    u8g2.drawStr(ALIGN_CENTER("Cloudy"), 56, "Cloudy");
-  } else if (pressure < 998.5 && pressure > 996.5) {
-    u8g2.drawStr(ALIGN_CENTER("Rain"), 56, "Rain");
-  } else if (pressure > 1000.6 && pressure < 1050) {
+  if (pressure > 1000.6 && pressure <= 1050) {
     u8g2.drawStr(ALIGN_CENTER("Clear Sky"), 56, "Clear Sky");
-  } else if (pressure > 990 && pressure <= 996.4) {
-    u8g2.drawStr(ALIGN_CENTER("Storm"), 56, "Storm");
+  } else if (pressure > 998.5 && pressure <= 1000.6) {
+    u8g2.drawStr(ALIGN_CENTER("Cloudy"), 56, "Cloudy");
+  } else if (pressure > 996.5 && pressure <= 998.5) {
+    u8g2.drawStr(ALIGN_CENTER("Rain"), 56, "Rain");
+  } else if (pressure > 980 && pressure <= 996.4) {
+    u8g2.drawStr(ALIGN_CENTER("Minimal Storm"), 56, "Minimal Storm");
+  } else if (pressure > 965 && pressure <= 980) {
+    u8g2.drawStr(ALIGN_CENTER("Moderate Storm"), 56, "Moderate Storm");
+  } else if (pressure > 945 && pressure <= 965) {
+    u8g2.drawStr(ALIGN_CENTER("Extensive Storm"), 56, "Extensive Storm");
+  } else if (pressure > 920 && pressure <= 945) {
+    u8g2.drawStr(ALIGN_CENTER("Extreme Storm"), 56, "Extreme Storm");
+  } else if (pressure <= 920) {
+    u8g2.drawStr(ALIGN_CENTER("Catastrophic Storm"),56, "Catastrophic Storm");
   } else {
-    u8g2.drawStr(ALIGN_CENTER("Error!"),56, "Error!");
+    u8g2.drawStr(ALIGN_CENTER("Error!"), 56, "Error!");
   }
 }
 
