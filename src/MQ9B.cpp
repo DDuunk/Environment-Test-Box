@@ -20,7 +20,7 @@ void MQ9B::calibrate() {
   }
   sensorValue = sensorValue / 100.0;
 
-  sensorVolt = sensorValue / 1024 * 5.0;
+  sensorVolt = (sensorValue / 1024) * 5.0;
   RSAir = (5.0 - sensorVolt) / sensorVolt;
   this->calibrationValue = RSAir / 9.9; // The ratio of RS/R0 is 9.9 in LPG mq9B
 
@@ -54,7 +54,7 @@ double MQ9B::readSensorVolt() {
   uint8_t sensorValue = analogRead(this->sensorPin);
   delay(10);
 
-  sensorVolt = (double) sensorValue / 1024 * 5.0;
+  sensorVolt = (double) (sensorValue / 1024) * 5.0;
   Serial.print("|MQ9B| SensorVolt: ");
   Serial.println(sensorVolt);
 

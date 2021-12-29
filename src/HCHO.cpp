@@ -14,7 +14,7 @@ void HCHO::calibrate() {
   this->calibrationValue = (1023.0 / sensorValue) - 1;
 
   Serial.print("|HCHO| [Calibration] R0: ");
-  Serial.println(calibrationValue);
+  Serial.println(this->calibrationValue);
 }
 
 double HCHO::readHCHO() {
@@ -25,7 +25,7 @@ double HCHO::readHCHO() {
 
   Serial.print("|HCHO| Rs: ");
   Serial.print(Rs);
-  Serial.print(", ppm = ");
+  Serial.print(", ppm: ");
   Serial.println(ppm);
 
   return ppm;
